@@ -1,38 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   wdmatch.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klaurine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/19 13:55:25 by klaurine          #+#    #+#             */
-/*   Updated: 2019/03/19 14:25:17 by klaurine         ###   ########.fr       */
+/*   Created: 2019/10/23 14:29:19 by klaurine          #+#    #+#             */
+/*   Updated: 2019/10/23 15:58:54 by klaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include <unistd.h>
 
-char	*ft_strcpy(char *s1, char *s2)
+int		main(int ac, char **av)
 {
 	int i;
+	int j;
 
 	i = 0;
-	while (s2[i] != '\0')
+	j = 0;
+	if (3 == ac)
 	{
-		s1[i] = s2[i];
-		i++;
+		while (av[1][i])
+			i++;
+		while (av[1][j])
+		{
+			while (*av[2])
+			{
+				if (*av[2] == av[1][j])
+				{
+					i--;
+					av[2]++;
+					break ;
+				}
+				av[2]++;
+			}
+			j++;
+		}
+		if (0 == i)
+			while (av[1][i])
+			{
+				write(1, &av[1][i], 1);
+				i++;
+			}
 	}
-	s1[i] = '\0';
-	return (s1);
-}
-
-int		main(void)
-{
-	char str1[] = "Hello";
-	char str2[] = "Mommy";
-
-	printf("%s\n", str1);
-	ft_strcpy(str1, str2);
-	printf("%s\n", str1);
+	write(1, "\n", 1);
 	return (0);
 }

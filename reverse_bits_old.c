@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   reverse_bits.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klaurine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/19 13:55:25 by klaurine          #+#    #+#             */
-/*   Updated: 2019/03/19 14:25:17 by klaurine         ###   ########.fr       */
+/*   Created: 2019/03/21 14:12:56 by klaurine          #+#    #+#             */
+/*   Updated: 2019/10/23 16:47:17 by klaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
 
-char	*ft_strcpy(char *s1, char *s2)
+unsigned char reverse_bits(unsigned char octet)
 {
-	int i;
+	unsigned char rev;
 
-	i = 0;
-	while (s2[i] != '\0')
-	{
-		s1[i] = s2[i];
-		i++;
-	}
-	s1[i] = '\0';
-	return (s1);
+	rev = 0;
+	rev = rev | (octet & 1) << 7;
+	rev = rev | (octet & 2) << 5;
+	rev = rev | (octet & 4) << 3;
+	rev = rev | (octet & 8) << 1;
+	rev = rev | (octet & 16) >> 1;
+	rev = rev | (octet & 32) >> 3;
+	rev = rev | (octet & 64) >> 5;
+	rev = rev | (octet & 128) >> 7;
+	return (rev);
 }
 
 int		main(void)
 {
-	char str1[] = "Hello";
-	char str2[] = "Mommy";
-
-	printf("%s\n", str1);
-	ft_strcpy(str1, str2);
-	printf("%s\n", str1);
+	printf("%c", reverse_bits('&'));
+	printf("\n");
 	return (0);
 }

@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   swap_bits.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klaurine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/19 13:55:25 by klaurine          #+#    #+#             */
-/*   Updated: 2019/03/19 14:25:17 by klaurine         ###   ########.fr       */
+/*   Created: 2019/10/23 14:00:16 by klaurine          #+#    #+#             */
+/*   Updated: 2019/10/23 14:00:21 by klaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+//#include <unistd.h>
 
-char	*ft_strcpy(char *s1, char *s2)
+unsigned char	swap_bits(unsigned char octet)
 {
-	int i;
-
-	i = 0;
-	while (s2[i] != '\0')
-	{
-		s1[i] = s2[i];
-		i++;
-	}
-	s1[i] = '\0';
-	return (s1);
+    return (octet << 4 | octet >> 4);
 }
 
+/*
 int		main(void)
 {
-	char str1[] = "Hello";
-	char str2[] = "Mommy";
+    char c;
 
-	printf("%s\n", str1);
-	ft_strcpy(str1, str2);
-	printf("%s\n", str1);
-	return (0);
+    c = 't';
+    write(1, &c, 1);
+    write(1, "\n", 1);
+    c = swap_bits(c);
+    write(1, &c, 1);
+    write(1, "\n", 1);
+    return (0);
 }
+ */

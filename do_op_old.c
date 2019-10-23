@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   search_and_replace.c                               :+:      :+:    :+:   */
+/*   do_op.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klaurine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/18 17:21:07 by klaurine          #+#    #+#             */
-/*   Updated: 2019/10/18 17:37:02 by klaurine         ###   ########.fr       */
+/*   Created: 2019/03/20 22:14:55 by klaurine          #+#    #+#             */
+/*   Updated: 2019/10/23 16:46:22 by klaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
 
 int		main(int ac, char **av)
 {
-	if (av[2][1] != '\0' || av[3][1] != '\0' || ac != 4)
-		write(1, "\n", 1);
+	if (ac != 4)
+		printf("\n");
 	else
 	{
-		while (*av[1])
-		{
-			if (*av[1] == *av[2])
-				*av[1] = *av[3];
-			write(1, av[1], 1);
-			av[1]++;
-		}
-		write(1, "\n", 1);
+		if (av[2][0] == '+')
+			printf("%d", (atoi(av[1]) + atoi(av[3])));
+		if (av[2][0] == '-')
+			printf("%d", (atoi(av[1]) - atoi(av[3])));
+		if (av[2][0] == '/')
+			printf("%d", (atoi(av[1]) / atoi(av[3])));
+		if (av[2][0] == '*')
+			printf("%d", (atoi(av[1]) * atoi(av[3])));
+		if (av[2][0] == '%')
+			printf("%d", (atoi(av[1]) % atoi(av[3])));
+		printf("\n");
+		return (0);
 	}
-	return (0);
 }

@@ -1,29 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ulstr.c                                            :+:      :+:    :+:   */
+/*   wdmatch.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klaurine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/18 17:40:06 by klaurine          #+#    #+#             */
-/*   Updated: 2019/10/18 17:48:36 by klaurine         ###   ########.fr       */
+/*   Created: 2019/03/21 12:16:38 by klaurine          #+#    #+#             */
+/*   Updated: 2019/10/23 16:48:23 by klaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
+int letter(char *str, char a, int b)
+{
+	int i;
+	int povtor;
+
+	i = 0;
+	povtor = 0;
+	while (str[i] != '\0' && i <= b)
+	{
+		if (str[i] == a)
+			povtor++;
+		i++;
+	}
+	return (povtor);
+}
+
 int		main(int ac, char **av)
 {
-	if (2 == ac)
+	int i;
+	int j;
+
+	i = 0;
+	if (ac == 3)
 	{
-		while (*av[1])
+		while (av[1][i])
 		{
-			if ('a' <= *av[1] && *av[1] <= 'z')
-				*av[1] -= 32;
-			else if ('A' <= *av[1] && *av[1] <= 'Z')
-				*av[1] += 32;
-			write(1, av[1], 1);
-			av[1]++;
+			j = 0;
+			while (av[2][j])
+			{
+				if (av[1][i] == av[2][j] &&
+						letter(av[1], av[1][i], i) == 1 &&
+						letter(av[2], av[2][j], j) == 1)
+					write(1, &av[1][i], 1);
+				j++;
+			}
+			i++;
 		}
 	}
 	write(1, "\n", 1);

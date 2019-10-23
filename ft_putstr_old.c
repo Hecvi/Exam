@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pustr.c                                            :+:      :+:    :+:   */
+/*   ft_pustr.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klaurine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -26,7 +26,7 @@ void	ft_putstr(char *str)
 
 int		main(void)
 {
-	char str[] = "Buddy";
+	char str[] = "Bobby";
 
 	ft_putstr(str);
 	return (0);

@@ -1,38 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   max.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klaurine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/19 13:55:25 by klaurine          #+#    #+#             */
-/*   Updated: 2019/03/19 14:25:17 by klaurine         ###   ########.fr       */
+/*   Created: 2019/10/23 13:50:40 by klaurine          #+#    #+#             */
+/*   Updated: 2019/10/23 13:58:27 by klaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+//#include <stdio.h>
 
-char	*ft_strcpy(char *s1, char *s2)
+int		max(int* tab, unsigned int len)
 {
-	int i;
+    int i;
 
-	i = 0;
-	while (s2[i] != '\0')
-	{
-		s1[i] = s2[i];
-		i++;
-	}
-	s1[i] = '\0';
-	return (s1);
+    if (!len)
+        return (0);
+    i = tab[0];
+    while (--len)
+        if (i < tab[len])
+            i = tab[len];
+    return (i);
 }
 
-int		main(void)
+/*
+int     main(void)
 {
-	char str1[] = "Hello";
-	char str2[] = "Mommy";
+    int tab[10] = {10, 1, -2, 3, 0, 7, 22, 43, 43, 0};
 
-	printf("%s\n", str1);
-	ft_strcpy(str1, str2);
-	printf("%s\n", str1);
-	return (0);
+    printf("%d", max(tab, 10));
+    return (0);
 }
+*/

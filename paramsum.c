@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   paramsum.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klaurine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/19 13:55:25 by klaurine          #+#    #+#             */
-/*   Updated: 2019/03/19 14:25:17 by klaurine         ###   ########.fr       */
+/*   Created: 2019/10/23 20:18:48 by klaurine          #+#    #+#             */
+/*   Updated: 2019/10/23 20:54:32 by klaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include <unistd.h>
 
-char	*ft_strcpy(char *s1, char *s2)
+void	ft_putchar(char c)
 {
-	int i;
-
-	i = 0;
-	while (s2[i] != '\0')
-	{
-		s1[i] = s2[i];
-		i++;
-	}
-	s1[i] = '\0';
-	return (s1);
+	write(1, &c, 1);
 }
 
-int		main(void)
+void	ft_putnbr(int c)
 {
-	char str1[] = "Hello";
-	char str2[] = "Mommy";
+	if (c > 9)
+		ft_putnbr(c / 10);
+	ft_putchar(c % 10 + '0');
+}
 
-	printf("%s\n", str1);
-	ft_strcpy(str1, str2);
-	printf("%s\n", str1);
+int		main(int ac, char **av)
+{
+	av = NULL;
+	ft_putnbr(ac - 1);
 	return (0);
 }

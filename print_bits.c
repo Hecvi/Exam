@@ -1,38 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   print_bits.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klaurine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/19 13:55:25 by klaurine          #+#    #+#             */
-/*   Updated: 2019/03/19 14:25:17 by klaurine         ###   ########.fr       */
+/*   Created: 2019/10/23 14:01:09 by klaurine          #+#    #+#             */
+/*   Updated: 2019/10/23 14:19:59 by klaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include <unistd.h>
 
-char	*ft_strcpy(char *s1, char *s2)
+void	print_bits(unsigned char octet)
 {
-	int i;
+    int             i;
+    unsigned char   mask;
 
-	i = 0;
-	while (s2[i] != '\0')
-	{
-		s1[i] = s2[i];
-		i++;
-	}
-	s1[i] = '\0';
-	return (s1);
+    i = 7;
+    while (i >= 0)
+    {
+        mask = (1 & (octet >> i)) + '0';
+        write(1, &mask, 1);
+        i--;
+    }
 }
 
-int		main(void)
+/*
+int     main(void)
 {
-	char str1[] = "Hello";
-	char str2[] = "Mommy";
+    unsigned char c;
 
-	printf("%s\n", str1);
-	ft_strcpy(str1, str2);
-	printf("%s\n", str1);
-	return (0);
+    c = '!';
+    print_bits(c);
+    write(1, "\n", 1);
+    return (0);
 }
+ */

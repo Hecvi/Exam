@@ -1,38 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klaurine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/19 13:55:25 by klaurine          #+#    #+#             */
-/*   Updated: 2019/03/19 14:25:17 by klaurine         ###   ########.fr       */
+/*   Created: 2019/10/23 14:22:21 by klaurine          #+#    #+#             */
+/*   Updated: 2019/10/23 14:22:52 by klaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+//#include <stdio.h>
 
-char	*ft_strcpy(char *s1, char *s2)
+int    ft_strcmp(char *s1, char *s2)
 {
-	int i;
-
-	i = 0;
-	while (s2[i] != '\0')
-	{
-		s1[i] = s2[i];
-		i++;
-	}
-	s1[i] = '\0';
-	return (s1);
+    while (*s1 == *s2 && *s1 && *s2)
+    {
+        s1++;
+        s2++;
+    }
+    return ((unsigned char)*s1 - (unsigned char)*s2);
 }
 
-int		main(void)
+/*
+int     main(void)
 {
-	char str1[] = "Hello";
-	char str2[] = "Mommy";
+    char *s1 = "\200";
+    char *s2 = "\0";
 
-	printf("%s\n", str1);
-	ft_strcpy(str1, str2);
-	printf("%s\n", str1);
-	return (0);
+    printf("%d\n", ft_strcmp(s1, s2));
+    return (0);
 }
+*/

@@ -1,38 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   max.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klaurine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/19 13:55:25 by klaurine          #+#    #+#             */
-/*   Updated: 2019/03/19 14:25:17 by klaurine         ###   ########.fr       */
+/*   Created: 2019/03/14 23:23:21 by klaurine          #+#    #+#             */
+/*   Updated: 2019/10/23 16:46:38 by klaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <stdlib.h>
 
-char	*ft_strcpy(char *s1, char *s2)
+int		max(int *tab, unsigned int len)
 {
-	int i;
+	unsigned i;
+	int j;
 
 	i = 0;
-	while (s2[i] != '\0')
+	j = tab[0];
+	if (len == 0)
+		return (0);
+	while (i < len)
 	{
-		s1[i] = s2[i];
+		if (tab[i] > j)
+			j = tab[i];
 		i++;
 	}
-	s1[i] = '\0';
-	return (s1);
+	return (j);
 }
 
 int		main(void)
 {
-	char str1[] = "Hello";
-	char str2[] = "Mommy";
+	int *tab;
+	int len;
 
-	printf("%s\n", str1);
-	ft_strcpy(str1, str2);
-	printf("%s\n", str1);
+	len = 3;
+	if (!(tab = (int*)malloc(sizeof(int) * 3)))
+		return (0);
+	tab[0] = -1;
+	tab[1] = 0;
+	tab[2] = 2;
+	printf("%d", max(tab, 3));
 	return (0);
 }
