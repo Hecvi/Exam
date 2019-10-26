@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   paramsum.c                                         :+:      :+:    :+:   */
+/*   is_power_of_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klaurine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/23 20:18:48 by klaurine          #+#    #+#             */
-/*   Updated: 2019/10/23 20:54:32 by klaurine         ###   ########.fr       */
+/*   Created: 2019/10/21 18:07:10 by klaurine          #+#    #+#             */
+/*   Updated: 2019/10/26 13:42:35 by klaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdio.h>
 
-void	ft_putchar(char c)
+int		is_power_of_2(unsigned int n)
 {
-	write(1, &c, 1);
+	unsigned int i;
+
+	i = 0;
+	while (i * i < n && i <= 65535)
+		i++;
+	return (n == i * i ? 1 : 0);
 }
 
-void	ft_putnbr(int c)
+int		main(void)
 {
-	if (c > 9)
-		ft_putnbr(c / 10);
-	ft_putchar(c % 10 + '0');
-}
-
-int		main(int ac, char **av)
-{
-	av = NULL;
-	ft_putnbr(ac - 1);
+	printf("%d", is_power_of_2(-0));
 	return (0);
 }
