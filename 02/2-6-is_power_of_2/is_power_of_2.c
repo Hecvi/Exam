@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   aff_a.c                                            :+:      :+:    :+:   */
+/*   is_power_of_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klaurine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/18 14:11:40 by klaurine          #+#    #+#             */
-/*   Updated: 2019/10/18 15:44:38 by klaurine         ###   ########.fr       */
+/*   Created: 2019/10/21 18:07:10 by klaurine          #+#    #+#             */
+/*   Updated: 2019/10/26 17:48:36 by klaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+//#include <stdio.h>
 
-int		main(int ac, char **av)
+int		is_power_of_2(unsigned int n)
 {
-	if (ac != 2)
-		write(1, "a", 1);
-	else
-		while (*av[1])
-		{
-			if ('a' == *av[1])
-			{
-				write(1, av[1], 1);
-				break ;
-			}
-			av[1]++;
-		}
-	write(1, "\n", 1);
+	if (0 == n)
+		return (0);
+	while (0 == (n % 2))
+		n /= 2;
+	return (1 == n ? 1 : 0);
+}
+
+/*
+int		main(void)
+{
+	printf("%d", is_power_of_2(8));
 	return (0);
 }
+*/

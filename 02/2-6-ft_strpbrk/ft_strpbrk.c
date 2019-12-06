@@ -1,29 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_power_of_2.c                                    :+:      :+:    :+:   */
+/*   ft_strpbrk.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klaurine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/21 18:07:10 by klaurine          #+#    #+#             */
-/*   Updated: 2019/10/26 13:42:35 by klaurine         ###   ########.fr       */
+/*   Created: 2019/12/05 17:48:40 by klaurine          #+#    #+#             */
+/*   Updated: 2019/12/06 15:25:14 by klaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include <string.h>
+// #include <stdio.h>
 
-int		is_power_of_2(unsigned int n)
+char *ft_strpbrk(const char *s1, const char *s2)
 {
-	unsigned int i;
+	int i;
 
-	i = 0;
-	while (i * i < n && i <= 65535)
-		i++;
-	return (n == i * i ? 1 : 0);
+	while (*s1)
+	{
+		i = 0;
+		while (s2[i])
+		{
+			if (*s1 == s2[i])
+				return ((char *)s1);
+			i++;
+		}
+		s1++;
+	}
+	return (NULL);
 }
-
+/*
 int		main(void)
 {
-	printf("%d", is_power_of_2(-0));
+	char *s1 = "Hello World";
+	char *s2 = "accckl;asd";
+
+	printf("%s\n", ft_strpbrk(s1, s2));
+	printf("%s", strpbrk(s1, s2));
 	return (0);
 }
+*/
