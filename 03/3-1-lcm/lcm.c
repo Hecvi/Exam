@@ -22,9 +22,10 @@ unsigned int	lcm(unsigned int a, unsigned int b)
 	i = a * b;
 	while (i >= a && i >= b)
 	{
-		if (!(i % a) && !(i % b))
-			c = i;
-		i--;
+        if (!(i % a) && !(i % b))
+            c = i;
+        i--;
+    }
 	return (c);
 }
 

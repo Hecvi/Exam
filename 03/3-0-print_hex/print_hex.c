@@ -12,6 +12,11 @@
 
 #include <unistd.h>
 
+void    ft_putchar(char c)
+{
+    write(1, &c, 1);
+}
+
 int		mini_atoi(char *s)
 {
 	int number;
@@ -27,19 +32,20 @@ int		mini_atoi(char *s)
 
 void	change_number(int number)
 {
-	if (number >= 16)
-		change_number (number / 16);
-	
-
+    if (number >= 16)
+        change_number(number / 16);
+    ft_putchar(number % 16 < 10 ? number % 16 + '0' : 'a' + number % 16 - 10);
+}
 
 int		main(int ac, char **av)
 {
-	int num;
+    int num;
 
-	if (2 == ac)
-	{
-		num = mini_atoi(av[1]);
-		change_number(num);
-	}
-	write(1, "\n", );
-	return (0);
+    if (2 == ac)
+    {
+        num = mini_atoi(av[1]);
+        change_number(num);
+    }
+    write(1, "\n", 1);
+    return (0);
+}
