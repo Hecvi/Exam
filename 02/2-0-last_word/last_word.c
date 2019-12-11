@@ -14,9 +14,7 @@
 
 int		space_tab(char c)
 {
-	if (' ' == c || '\t' == c)
-		return (1);
-	return (0);
+	return (‘ ' == c || '\t' == c ? 1 : 0);
 }
 
 int		main(int ac, char **av)

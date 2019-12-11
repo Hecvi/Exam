@@ -6,7 +6,7 @@
 /*   By: klaurine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 15:55:00 by klaurine          #+#    #+#             */
-/*   Updated: 2019/10/23 13:59:39 by klaurine         ###   ########.fr       */
+/*   Updated: 2019/12/11 15:43:56 by klaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ int		main(int ac, char **av)
 		j = 0;
 		while (av[1][j])
 		{
-			if (0 == check[(int)av[1][j]])
+			if (0 == check[av[1][j]])
 			{
 				i = 0;
-				check[(int)av[1][j]] = 1;
+				check[av[1][j]] = 1;
 				while (av[2][i])
 				{
 					if (av[1][j] == av[2][i])
