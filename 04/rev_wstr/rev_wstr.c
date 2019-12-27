@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rostring.c                                         :+:      :+:    :+:   */
+/*   rev_wstr.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klaurine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/26 13:35:16 by klaurine          #+#    #+#             */
-/*   Updated: 2019/12/26 13:35:19 by klaurine         ###   ########.fr       */
+/*   Created: 2019/12/27 17:31:04 by klaurine          #+#    #+#             */
+/*   Updated: 2019/12/27 17:31:07 by klaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int    print_word(char *s, int i)
     int count;
 
     count = 0;
-    while (s[i] != ' ' && s[i] != '\t' && s[i])
-        count += write (1, &s[i++], 1);
+    while (s[i] && s[i] != ' ' && s[i] != '\t')
+        count += write(1, &s[i++], 1);
     return (count);
 }
 
@@ -28,29 +28,21 @@ int     main(int ac, char **av)
     int count;
 
     i = 0;
-    if (ac > 1)
+    if (ac == 2)
     {
-        while (av[1][i] && (' ' == av[1][i] || '\t' == av[1][i]))
-            i++;
-        while (av[1][i] && av[1][i] != ' ' && av[1][i] != '\t')
-            i++;
         while (av[1][i])
+            i++;
+        while (i >= 0)
         {
             count = 0;
-            if (av[1][i] != ' ' && av[1][i] != '\t')
+            while (' ' == av[1][i])
             {
                 count += print_word(av[1], i);
-                write(1, " ", 1);
+                if (count)
+                    write(1, " ", 1);
             }
-            i = i + count;
-            if (!av[1][i])
-                break ;
-            i++;
+            i--;
         }
-        i = 0;
-        while (' ' == av[1][i] || '\t' == av[1][i])
-            i++;
-        print_word(av[1], i);
     }
     write(1, "\n", 1);
     return (0);
