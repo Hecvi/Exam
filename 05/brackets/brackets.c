@@ -39,7 +39,7 @@ int     main(int ac, char **av)
             sign = 0;
             while (av[i][j])
             {
-                if ((')' == av[i][j] && '\0' == mas[0]) || (']' == av[i][j] && '\0' == mas[0]) || ('}' == av[i][j] && '\0' == mas[0]))
+                if ((')' == av[i][j] || ']' == av[i][j] || '}' == av[i][j]) && '\0' == mas[0])
                 {
                     write(1, "Error\n", 6);
                     sign = 1;
