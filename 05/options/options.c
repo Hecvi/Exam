@@ -29,10 +29,10 @@ int     main(int ac, char **av)
             j = 1;
             if ('-' == av[i][0])
             {
-                if ('h' == av[i][j])
-                    return (write(1, "options: abcdefghijklmnopqrstuvwxyz\n", 36));
                 while (av[i][j])
                 {
+                    if ('h' == av[i][j])
+                        return (write(1, "options: abcdefghijklmnopqrstuvwxyz\n", 36));
                     if (av[i][j] >= 'a' && av[i][j] <= 'z')
                         bytes['z' - av[i][j] + 6] = 1;
                     else

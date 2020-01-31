@@ -12,7 +12,7 @@
 
 #include <stdlib.h>
 
-int     counter_words(char *str)
+int     counter_words(const char *str)
 {
     int i;
     int count;
@@ -30,7 +30,7 @@ int     counter_words(char *str)
     return (count);
 }
 
-int     counter_letters(char *str, int i)
+int     counter_letters(const char *str, int i)
 {
     int count;
 
@@ -43,7 +43,7 @@ int     counter_letters(char *str, int i)
     return (count);
 }
 
-char    *freechar(char **s, int j)
+void    *freechar(char **s, int j)
 {
     j--;
     while (j >= 0)
@@ -54,7 +54,6 @@ char    *freechar(char **s, int j)
     }
     free(s);
     s = NULL;
-    return (s);
 }
 
 char    **ft_split(char *str)
